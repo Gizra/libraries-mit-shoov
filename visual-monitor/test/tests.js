@@ -9,6 +9,7 @@ var shoovWebdrivercss = require('shoov-webdrivercss');
 
 var capsConfig = {
   'chrome': {
+    'project': 'libraries-mit',
     'browser' : 'Chrome',
     'browser_version' : '42.0',
     'os' : 'OS X',
@@ -16,6 +17,7 @@ var capsConfig = {
     'resolution' : '1024x768'
   },
   'ie11': {
+    'project': 'libraries-mit',
     'browser' : 'IE',
     'browser_version' : '11.0',
     'os' : 'Windows',
@@ -23,6 +25,7 @@ var capsConfig = {
     'resolution' : '1024x768'
   },
   'iphone5': {
+    'project': 'libraries-mit',
     'browser' : 'Chrome',
     'browser_version' : '42.0',
     'os' : 'OS X',
@@ -61,9 +64,12 @@ describe('Visual monitor testing', function() {
       .url(baseUrl)
       .webdrivercss(testName + '.homepage', {
         name: '1',
-        exclude: [],
+        exclude: [
+          '#home-posts-news .title-post',
+          '#home-posts-news .image',
+        ],
         remove: [],
-        screenWidth: selectedCaps == 'chrome' ? [320, 640, 960, 1200] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [640, 960, 1200] : undefined,
       }, shoovWebdrivercss.processResults)
       .call(done);
   });
